@@ -1,6 +1,63 @@
-.env
-.venv/
+# --- Python ---
 __pycache__/
-.idea/
-.DS_Store
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Flask / instance data ---
 instance/
+.webassets-cache
+
+# --- Database files (never commit real data) ---
+*.db
+*.sqlite
+*.sqlite3
+posts.db
+blog.db
+
+# --- Environment variables / secrets ---
+.env
+.flaskenv
+*.env
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- PyCharm specific ---
+.idea/
+*.iml
+
+# --- Logs ---
+*.log
+
+# --- Testing / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
