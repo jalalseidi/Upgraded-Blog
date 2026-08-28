@@ -56,7 +56,10 @@ def admin_only(f):
 # CREATE DATABASE
 class Base(DeclarativeBase):
     pass
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+uri = os.environ.get("DATABASE_URL", "sqlite:///posts.db")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
