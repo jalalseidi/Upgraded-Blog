@@ -50,7 +50,6 @@ blog.db
 .DS_Store
 
 # --- PyCharm specific ---
-.idea/
 *.iml
 
 # --- Logs ---
