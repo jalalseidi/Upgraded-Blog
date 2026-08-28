@@ -26,14 +26,17 @@ MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 def send_email(name, email, phone, message):
     email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
-    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=MY_EMAIL,
-            msg=email_message
-        )
+    try:
+        with smtplib.SMTP("smtp.gmail.com", port=587, timeout=10) as connection:
+            connection.starttls()
+            connection.login(MY_EMAIL, MY_PASSWORD)
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=MY_EMAIL,
+                msg=email_message
+            )
+    except Exception as e:
+        print(f"Failed to send email: {e}")
 
 def gravatar_url(email, size=100, rating='g', default='retro', force_default=False):
     hash_value = hashlib.md5(email.lower().encode('utf-8')).hexdigest()
